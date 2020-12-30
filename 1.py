@@ -39,5 +39,7 @@ class Solution:
 board = [["A","B","C","E",],["S","F","C","S",],["A","D","E","E",],]
 word = "ABCCED"
 dp = Solution()
-
-print(dp.exist(board,word))
+colomn = 10
+row = 10
+path = [[0]*colomn for _ in range(row)]
+print(path)

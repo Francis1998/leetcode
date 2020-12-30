@@ -1,3 +1,4 @@
+import sys
 class MinStack:
     
     def __init__(self):
@@ -6,20 +7,23 @@ class MinStack:
         """
         self.data = []
         self.seek = []
+        self.seek.append(sys.maxsize)
 
     def push(self, x: int) -> None:
         self.data.append(x)
-        if len(self.seek)==0:
-            self.seek.append(0)
+        top = self.seek[-1]
+        self.seek.append(min(top,x))
+
 
     def pop(self) -> None:
         self.data.pop(-1)
+        self.seek.pop(-1)
 
     def top(self) -> int:
-        return self.data[0]
+        return self.data[-1]
 
     def getMin(self) -> int:
-        return self.data[self.seek[-1]]
+        return self.seek[-1]
 
 
 # Your MinStack object will be instantiated and called as such:
